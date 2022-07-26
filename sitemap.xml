@@ -2,332 +2,332 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://carlmontanari.github.io/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/changelog/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/public_api_status/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/about/code_of_conduct/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/about/contributing/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/about/thank_you/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/decorators/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/exceptions/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/factory/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/helper/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/logging/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/response/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/ssh_config/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/channel/async_channel/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/channel/base_channel/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/channel/sync_channel/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/generic_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/network_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/base/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/base/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/base/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/arista_eos/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/arista_eos/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/arista_eos/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_iosxe/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_iosxe/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_iosxe/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_iosxr/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_iosxr/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_iosxr/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_nxos/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_nxos/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/cisco_nxos/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/juniper_junos/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/juniper_junos/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/core/juniper_junos/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/generic/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/generic/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/generic/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/network/async_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/network/base_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/driver/network/sync_driver/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/base/async_transport/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/base/base_socket/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/base/base_transport/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/base/sync_transport/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/plugins/asyncssh/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/plugins/asynctelnet/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/plugins/paramiko/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/plugins/ssh2/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/plugins/system/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/api_docs/transport/plugins/telnet/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/more_scrapli/nornir_scrapli/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/more_scrapli/scrapli_cfg/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/more_scrapli/scrapli_community/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/more_scrapli/scrapli_netconf/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/more_scrapli/scrapli_replay/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/advanced_usage/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/basic_usage/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/faq/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/installation/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/linting_testing/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/project_details/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/quickstart/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://carlmontanari.github.io/user_guide/versioning/</loc>
-         <lastmod>2022-03-06</lastmod>
+         <lastmod>2022-07-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
