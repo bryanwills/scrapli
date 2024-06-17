@@ -1,11 +1,108 @@
 import logging
-import sys
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Type, Union
 
 import pytest
 
+from scrapli.driver.base import AsyncDriver, Driver
 from scrapli.driver.base.base_driver import BaseDriver
 from scrapli.exceptions import ScrapliTransportPluginError, ScrapliTypeError, ScrapliValueError
+from scrapli.transport.base import (
+    AsyncTransport,
+    BasePluginTransportArgs,
+    BaseTransportArgs,
+    Transport,
+)
+from scrapli.transport.plugins.system.transport import SystemTransport
+
+
+@dataclass
+class PluginTransportArgs(BasePluginTransportArgs):
+    pass
+
+
+class DummysyncTransport(Transport):
+    transport_name = "dummysync"
+
+    def __init__(
+        self, base_transport_args: BaseTransportArgs, plugin_transport_args: PluginTransportArgs
+    ) -> None:
+        super().__init__(base_transport_args=base_transport_args)
+        self.plugin_transport_args = plugin_transport_args
+
+    def open(self):
+        pass
+
+    def close(self):
+        pass
+
+    def isalive(self):
+        pass
+
+    def read(self):
+        pass
+
+    def write(self, _):
+        pass
+
+
+class DummyasyncTransport(AsyncTransport):
+    transport_name = "dummyasync"
+
+    def __init__(
+        self, base_transport_args: BaseTransportArgs, plugin_transport_args: PluginTransportArgs
+    ) -> None:
+        super().__init__(base_transport_args=base_transport_args)
+        self.plugin_transport_args = plugin_transport_args
+
+    async def open(self):
+        pass
+
+    def close(self):
+        pass
+
+    def isalive(self):
+        pass
+
+    async def read(self):
+        pass
+
+    def write(self, _):
+        pass
+
+
+def monkeypatch_plugin_transport_module(
+    monkeypatch,
+    transport_name: str,
+    transport_cls: Union[Type[Transport], Type[AsyncTransport]],
+    transport_args_cls: Type[BasePluginTransportArgs] = PluginTransportArgs,
+):
+    """
+    1. Creates a fake module `scrapli_{transport_name}.transport` which
+        contains the transport class and the args class `PluginTransportArgs`
+        as expected by the transport factory for the non-core scenario.
+    2. Makes the fake module available to be imported with importlib.import_module
+        by monkeypatching the `import_module` function.
+    """
+    import importlib
+    import types
+
+    plugin_module_name = f"scrapli_{transport_name}.transport"
+    plugin_module = types.ModuleType(plugin_module_name)
+    plugin_module.__dict__[transport_cls.__name__] = transport_cls
+    plugin_module.__dict__["PluginTransportArgs"] = transport_args_cls
+
+    non_patched_import_lib = importlib.import_module
+
+    def _import_module(name: str, package: Union[str, None] = None):
+        if name == plugin_module_name:
+            return plugin_module
+        return non_patched_import_lib(name=name, package=package)
+
+    monkeypatch.setattr("importlib.import_module", _import_module)
+
+    return plugin_module
 
 
 def test_str(base_driver):
@@ -111,15 +208,17 @@ def test_update_ssh_args_from_ssh_config(fs_, real_ssh_config_file_path, base_dr
         (
             True,
             True,
+            SystemTransport.SSH_SYSTEM_CONFIG_MAGIC_STRING,
+            SystemTransport.SSH_SYSTEM_KNOWN_HOSTS_FILE_MAGIC_STRING,
+            "system",
         ),
-        (
-            "blah",
-            "blah",
-        ),
+        (True, True, "", "", "asyncssh"),
+        ("blah", "blah", "", "", "system"),
+        ("blah", "blah", "", "", "asyncssh"),
     ),
-    ids=("true", "unresolvable_path"),
+    ids=("true-system", "true-asyncssh", "unresolvable_path-system", "unresolvable_path-asyncssh"),
 )
-def test_setup_ssh_file_args_resolved(fs_, base_driver, test_data):
+def test_setup_ssh_file_args_resolved(fs_, test_data, base_driver):
     """
     Assert we handle ssh config/known hosts inputs properly
 
@@ -127,16 +226,21 @@ def test_setup_ssh_file_args_resolved(fs_, base_driver, test_data):
     that if given a non False bool or a string we properly try to resolve the ssh files
     """
     # using fakefs to ensure we dont resolve user/system config files
-    ssh_config_file_input, ssh_known_hosts_file_input = test_data
-
+    (
+        ssh_config_file_input,
+        ssh_known_hosts_file_input,
+        expected_result_ssh_config,
+        expected_result_known_hosts,
+        transport,
+    ) = test_data
     resolved_ssh_config_file, resolved_ssh_known_hosts_file = base_driver._setup_ssh_file_args(
-        transport="system",
+        transport=transport,
         ssh_config_file=ssh_config_file_input,
         ssh_known_hosts_file=ssh_known_hosts_file_input,
     )
 
-    assert resolved_ssh_config_file == ""
-    assert resolved_ssh_known_hosts_file == ""
+    assert resolved_ssh_config_file == expected_result_ssh_config
+    assert resolved_ssh_known_hosts_file == expected_result_known_hosts
 
 
 @pytest.mark.parametrize(
@@ -217,8 +321,31 @@ def test_load_non_core_transport_plugin_exception(monkeypatch):
     assert "Transport Plugin Extra Not Installed!" in str(exc.value)
 
 
-# TODO transport factory w/ non-core -- maybe just mock something so the tests dont depend on
-#  anything external
+@pytest.mark.parametrize(
+    "test_data",
+    (
+        (Driver, "dummysync", DummysyncTransport),
+        (AsyncDriver, "dummyasync", DummyasyncTransport),
+    ),
+    ids=("sync_driver", "async_driver"),
+)
+def test_transport_factory_non_core(monkeypatch, test_data):
+    """Assert _transport_factory properly loads non-core transport plugin and args"""
+
+    driver_factory, transport_name, transport_cls = test_data
+
+    fake_plugin_module = monkeypatch_plugin_transport_module(
+        monkeypatch, transport_name, transport_cls
+    )
+
+    driver = driver_factory(host="localhost", transport=transport_name)
+    plugin_transport_args = fake_plugin_module.__dict__["PluginTransportArgs"]()
+    actual_transport_class, actual_transport_plugin_args = driver._transport_factory()
+
+    assert actual_transport_class == transport_cls
+    assert actual_transport_plugin_args == plugin_transport_args
+    assert isinstance(driver.transport, transport_cls)
+
 
 # TODO test load core and non core transport plugins
 
@@ -226,55 +353,107 @@ def test_load_non_core_transport_plugin_exception(monkeypatch):
 @pytest.mark.parametrize(
     "test_data",
     [
-        ("", "/etc/ssh/ssh_config", True, "/etc/ssh/ssh_config"),
+        ("system", "", SystemTransport.SSH_SYSTEM_CONFIG_MAGIC_STRING, True, "/etc/ssh/ssh_config"),
+        ("asyncssh", "", "/etc/ssh/ssh_config", True, "/etc/ssh/ssh_config"),
+        ("system", "/etc/ssh/ssh_config", "/etc/ssh/ssh_config", True, "/etc/ssh/ssh_config"),
+        ("ssh2", "/etc/ssh/ssh_config", "/etc/ssh/ssh_config", True, "/etc/ssh/ssh_config"),
         (
+            "system",
+            "",
+            SystemTransport.SSH_SYSTEM_CONFIG_MAGIC_STRING,
+            True,
+            str(Path("~/.ssh/config").expanduser()),
+        ),
+        (
+            "ssh2",
             "",
             str(Path("~/.ssh/config").expanduser()),
             True,
             str(Path("~/.ssh/config").expanduser()),
         ),
-        ("/non_standard_ssh_config", "/non_standard_ssh_config", True, "/non_standard_ssh_config"),
-        ("", "", False, ""),
+        (
+            "system",
+            "/non_standard_ssh_config",
+            "/non_standard_ssh_config",
+            True,
+            "/non_standard_ssh_config",
+        ),
+        ("ssh2", "", "", False, ""),
     ],
-    ids=("auto_etc", "auto_user", "manual_location", "no_config"),
+    ids=(
+        "auto_etc-system",
+        "auto_etc-asyncssh",
+        "manual_location-system",
+        "manual_location-ssh2",
+        "auto_user-system",
+        "auto_user-ssh2",
+        "non-standard",
+        "no_config-ssh2",
+    ),
 )
 def test_resolve_ssh_config(fs_, real_ssh_config_file_path, base_driver, test_data):
-    input_data, expected_output, mount_real_file, fake_fs_destination = test_data
 
+    transport, input_data, expected_output, mount_real_file, fake_fs_destination = test_data
     if mount_real_file:
         fs_.add_real_file(source_path=real_ssh_config_file_path, target_path=fake_fs_destination)
-    actual_output = base_driver._resolve_ssh_config(ssh_config_file=input_data)
+    actual_output = base_driver._resolve_ssh_config(ssh_config_file=input_data, transport=transport)
     assert actual_output == expected_output
 
 
 @pytest.mark.parametrize(
     "test_data",
     [
-        ("", "/etc/ssh/ssh_known_hosts", True, "/etc/ssh/ssh_known_hosts"),
         (
+            "system",
+            "",
+            SystemTransport.SSH_SYSTEM_KNOWN_HOSTS_FILE_MAGIC_STRING,
+            True,
+            "/etc/ssh/ssh_known_hosts",
+        ),
+        ("asyncssh", "", "/etc/ssh/ssh_known_hosts", True, "/etc/ssh/ssh_known_hosts"),
+        (
+            "system",
+            "",
+            SystemTransport.SSH_SYSTEM_KNOWN_HOSTS_FILE_MAGIC_STRING,
+            True,
+            str(Path("~/.ssh/known_hosts").expanduser()),
+        ),
+        (
+            "asyncssh",
             "",
             str(Path("~/.ssh/known_hosts").expanduser()),
             True,
             str(Path("~/.ssh/known_hosts").expanduser()),
         ),
         (
+            "system",
             "/non_standard_ssh_known_hosts",
             "/non_standard_ssh_known_hosts",
             True,
             "/non_standard_ssh_known_hosts",
         ),
-        ("", "", False, ""),
+        ("system", "", SystemTransport.SSH_SYSTEM_KNOWN_HOSTS_FILE_MAGIC_STRING, False, ""),
+        ("ssh2", "", "", False, ""),
     ],
-    ids=("auto_etc", "auto_user", "manual_location", "no_config"),
+    ids=(
+        "auto_etc-system",
+        "auto_etc-asyncssh",
+        "auto_user-system",
+        "auto_user-asyncssh",
+        "manual_location",
+        "no_config-system",
+        "no_config-ssh2",
+    ),
 )
 def test_resolve_ssh_known_hosts(fs_, real_ssh_known_hosts_file_path, base_driver, test_data):
-    input_data, expected_output, mount_real_file, fake_fs_destination = test_data
-
+    transport, input_data, expected_output, mount_real_file, fake_fs_destination = test_data
     if mount_real_file:
         fs_.add_real_file(
             source_path=real_ssh_known_hosts_file_path, target_path=fake_fs_destination
         )
-    actual_output = base_driver._resolve_ssh_known_hosts(ssh_known_hosts=input_data)
+    actual_output = base_driver._resolve_ssh_known_hosts(
+        ssh_known_hosts=input_data, transport=transport
+    )
     assert actual_output == expected_output
 
 

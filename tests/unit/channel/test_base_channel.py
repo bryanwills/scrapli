@@ -348,6 +348,16 @@ def test_process_output(base_channel):
             b"\x1b7c\x1b8\x1b[1C\x1b7o\x1b8\x1b[1C\x1b7n\x1b8\x1b[1C\x1b7f\x1b8\x1b[1C\x1b7i\x1b8\x1b[1C\x1b7g\x1b8\x1b[1C\x1b7u\x1b8\x1b[1C\x1b7r\x1b8\x1b[1C\x1b7e\x1b8\x1b[1C",
             b"configure",
         ),
+        # https://github.com/carlmontanari/scrapli/discussions/325#discussioncomment-9234132
+        (
+            b"\x1b[?2004h\x1b]0;user@line5-cpe-0: ~\x07user@line5-cpe-0:~$",
+            b"user@line5-cpe-0:~$",
+        ),
+        # https://github.com/carlmontanari/scrapli/issues/331
+        (
+            b"\x1b[?6l\x1b[1;80r\x1b[?7h\x1b[2J\x1b[1;1H\x1b[1920;1920H\x1b[6n\x1b[1;1HYour previous successful login (as manager) was on 2024-05-24 11:29:02     \n from X.X.X.X\n\x1b[1;80r\x1b[80;1H\x1b[80;1H\x1b[2K\x1b[80;1H\x1b[?25h\x1b[80;1H\x1b[80;1HHOSTNAME# \x1b[80;1H\x1b[80;20H\x1b[80;1H\x1b[?25h\x1b[80;20H\x1b[1;0H\x1b[1M\x1b[80;1H\x1b[1L\x1b[80;20H\x1b[80;1H\x1b[2K\x1b[80;1H\x1b[?25h\x1b[80;1H\x1b[1;80r\x1b[80;1H\x1b[1;80r\x1b[80;1H\x1b[80;1H\x1b[2K\x1b[80;1H\x1b[?25h\x1b[80;1H\x1b[80;1HHOSTNAME# \x1b[80;1H\x1b[80;20H\x1b[80;1H\x1b[?25h\x1b[80;20H",
+            b"Your previous successful login (as manager) was on 2024-05-24 11:29:02     \n from X.X.X.X\nHOSTNAME# HOSTNAME# ",
+        ),
     ),
 )
 def test_strip_ansi(base_channel, buf: bytes, expected: bytes):
