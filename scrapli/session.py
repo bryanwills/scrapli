@@ -39,6 +39,8 @@ class Options:
     operation_timeout_s: int | None = None
     operation_timeout_ns: int | None = None
     operation_max_search_depth: int | None = None
+    scratch_initial_size: int | None = None
+    scratch_retain_max: int | None = None
     recorder_path: str | None = None
     recorder_callback: Callable[[str], None] | None = None
 
@@ -91,6 +93,14 @@ class Options:
             options.contents.session.operation_max_search_depth = pointer(
                 c_uint64(self.operation_max_search_depth)
             )
+
+        if self.scratch_initial_size is not None:
+            options.contents.session.scratch_initial_size = pointer(
+                c_uint64(self.scratch_initial_size)
+            )
+
+        if self.scratch_retain_max is not None:
+            options.contents.session.scratch_retain_max = pointer(c_uint64(self.scratch_retain_max))
 
         if self.recorder_path is not None:
             self._recorder_path = to_c_string(self.recorder_path)

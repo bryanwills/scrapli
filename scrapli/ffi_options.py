@@ -95,6 +95,8 @@ class Session(Structure):
         ("record_destination", c_char_p),
         ("record_destination_len", c_size_t),
         ("record_callback", RecorderCallbackC),
+        ("scratch_initial_size", U64Pointer),
+        ("scratch_retain_max", U64Pointer),
     ]
 
 
