@@ -53,7 +53,7 @@ class Options:
             if self.operation_timeout_ns is None and self.operation_timeout_s is not None:
                 self.operation_timeout_ns = second_to_nano(d=self.operation_timeout_s)
 
-    def apply(self, *, options: DriverOptionsPointer) -> None:
+    def apply(self, *, options: DriverOptionsPointer) -> None:  # noqa: C901
         """
         Applies the options to the given options struct.
 
