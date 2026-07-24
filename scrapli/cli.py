@@ -969,6 +969,9 @@ class Cli:
 
         err_contents = err_slice.contents.get_decoded_contents()
         if err_contents:
+            if last_err_string:
+                err_contents += f": {last_err_string}"
+
             raise OperationException(err_contents)
 
         return Result(
@@ -1040,6 +1043,9 @@ class Cli:
 
         err_contents = err_slice.contents.get_decoded_contents()
         if err_contents:
+            if last_err_string:
+                err_contents += f": {last_err_string}"
+
             raise OperationException(err_contents)
 
         failed_indicator = results_failed_indicator_slice.contents.get_decoded_contents()

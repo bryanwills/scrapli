@@ -911,6 +911,9 @@ class Netconf:
 
         err_contents = err_slice.contents.get_decoded_contents()
         if err_contents:
+            if last_err_string:
+                err_contents += f": {last_err_string}"
+
             raise OperationException(err_contents)
 
         return Result(
@@ -981,6 +984,9 @@ class Netconf:
 
         err_contents = err_slice.contents.get_decoded_contents()
         if err_contents:
+            if last_err_string:
+                err_contents += f": {last_err_string}"
+
             raise OperationException(err_contents)
 
         return Result(
