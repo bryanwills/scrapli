@@ -857,7 +857,7 @@ class LibScrapliCliMapping:
             message="submitting read any operation failed",
         )
 
-    def read_callback_should_execute(
+    def read_callback_should_execute(  # noqa: PLR0917
         self,
         buf: c_char_p,
         name: c_char_p,

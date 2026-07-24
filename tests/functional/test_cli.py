@@ -491,7 +491,7 @@ SEND_INPUT_IDS = (
     argvalues=SEND_INPUT_ARGVALUES,
     ids=SEND_INPUT_IDS,
 )
-def test_send_input(
+def test_send_input(  # noqa: PLR0917
     input_,
     requested_mode,
     post_open_requested_mode,
@@ -525,7 +525,7 @@ def test_send_input(
     argvalues=SEND_INPUT_ARGVALUES,
     ids=SEND_INPUT_IDS,
 )
-async def test_send_input_async(
+async def test_send_input_async(  # noqa: PLR0917
     input_,
     requested_mode,
     post_open_requested_mode,
@@ -660,7 +660,7 @@ SEND_PROMPTED_INPUT_IDS = (
     argvalues=SEND_PROMPTED_INPUT_ARGVALUES,
     ids=SEND_PROMPTED_INPUT_IDS,
 )
-def test_send_prompted_input(
+def test_send_prompted_input(  # noqa: PLR0917
     input_,
     prompt,
     response,
@@ -686,7 +686,7 @@ def test_send_prompted_input(
     argvalues=SEND_PROMPTED_INPUT_ARGVALUES,
     ids=SEND_PROMPTED_INPUT_IDS,
 )
-async def test_send_prompted_input_async(
+async def test_send_prompted_input_async(  # noqa: PLR0917
     input_,
     prompt,
     response,
